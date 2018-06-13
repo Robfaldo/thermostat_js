@@ -28,15 +28,52 @@ describe('Thermostat', function(){
     var thermostat = new Thermostat();
     expect(function() {thermostat.down(11);} ).toThrowError();
   });
-});
 
+  describe("power saving mode", function() {
+    it("tells user whether or not in power saving mode", function(){
+      var thermostat = new Thermostat();
+      expect(thermostat.isPowerSavingMode).toBe(false);
+    });
+  
+    it("user can turn power saving mode on", function() {
+      var thermostat = new Thermostat();
+      thermostat.powerSavingModeOn();
+      expect(thermostat.isPowerSavingMode).toBe(true);
+    });
+
+    it("user can turn power saving mode off", function() {
+      var thermostat = new Thermostat();
+      thermostat.powerSavingModeOn();
+      thermostat.powerSavingModeOff();
+      expect(thermostat.isPowerSavingMode).toBe(false);
+    });
+
+    // If power saving mode is on, the maximum temperature is 25 degrees
+    describe("when power saving mode is on", function() {
+      it("has a maximum temperature of 25", function() {
+        var thermostat = new Thermostat();
+        thermostat.powerSavingModeOn();
+        expect(function() {thermostat.up(6)}).toThrowError();
+      });
+    });
+
+    describe("when power saving mode is off", function() {
+      it("has a maximum temperature of 32", function() {
+        var thermostat = new Thermostat();
+        thermostat.powerSavingModeOff();
+        expect(function() {thermostat.up(6)}).not.toThrowError();
+        expect(function() {thermostat.up(13)}).toThrowError();
+      });
+    });
+  });
+});
 
 
 // DONE Thermostat starts at 20 degrees
 // DONE You can increase the temperature with an up function
 // Done You can decrease the temperature with a down function
 // DONE The minimum temperature is 10 degrees
-// If power saving mode is on, the maximum temperature is 25 degrees
+// DONE If power saving mode is on, the maximum temperature is 25 degrees
 // If power saving mode is off, the maximum temperature is 32 degrees
 // Power saving mode is on by default
 // You can reset the temperature to 20 with a reset function
