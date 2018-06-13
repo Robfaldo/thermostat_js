@@ -2,47 +2,45 @@
 
 describe('Thermostat', function(){
 
+  var thermostat;
+
+  beforeEach(function() {
+    thermostat = new Thermostat();
+  });
+
   // Thermostat starts at 20 degrees
   it('starts at 20 degrees', function(){
-    var thermostat = new Thermostat();
     expect(thermostat.temperature).toEqual(20);
   });
 
   //You can increase the temperature with an up function
   it("can increase the temperature", function(){
-    var thermostat = new Thermostat();
     thermostat.up(1);
     expect(thermostat.temperature).toEqual(21);
   });
 
   // You can decrease the temperature with a down function
   it("can decrease the temperature", function(){
-    var thermostat = new Thermostat();
     thermostat.down(1);
-    console.log(thermostat.tempera)
     expect(thermostat.temperature).toEqual(19);
   });
   
   // The minimum temperature is 10 degrees
   it('has a minimum temperature of 10', function(){
-    var thermostat = new Thermostat();
     expect(function() {thermostat.down(11);} ).toThrowError();
   });
 
   describe("power saving mode", function() {
     it("tells user whether or not in power saving mode", function(){
-      var thermostat = new Thermostat();
       expect(thermostat.isPowerSavingMode).toBe(false);
     });
   
     it("user can turn power saving mode on", function() {
-      var thermostat = new Thermostat();
       thermostat.powerSavingModeOn();
       expect(thermostat.isPowerSavingMode).toBe(true);
     });
 
     it("user can turn power saving mode off", function() {
-      var thermostat = new Thermostat();
       thermostat.powerSavingModeOn();
       thermostat.powerSavingModeOff();
       expect(thermostat.isPowerSavingMode).toBe(false);
@@ -51,7 +49,6 @@ describe('Thermostat', function(){
     // If power saving mode is on, the maximum temperature is 25 degrees
     describe("when power saving mode is on", function() {
       it("has a maximum temperature of 25", function() {
-        var thermostat = new Thermostat();
         thermostat.powerSavingModeOn();
         expect(function() {thermostat.up(6)}).toThrowError();
       });
@@ -59,7 +56,6 @@ describe('Thermostat', function(){
 
     describe("when power saving mode is off", function() {
       it("has a maximum temperature of 32", function() {
-        var thermostat = new Thermostat();
         thermostat.powerSavingModeOff();
         expect(function() {thermostat.up(6)}).not.toThrowError();
         expect(function() {thermostat.up(13)}).toThrowError();
