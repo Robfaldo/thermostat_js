@@ -28,7 +28,7 @@ Thermostat.prototype.down = function(amount) {
   };
 };
 
-Thermostat.prototype.isPowerSavingMode = false;
+Thermostat.prototype.isPowerSavingMode = true;
 
 Thermostat.prototype.powerSavingModeOn = function() {
   this.isPowerSavingMode = true;
@@ -36,4 +36,19 @@ Thermostat.prototype.powerSavingModeOn = function() {
 
 Thermostat.prototype.powerSavingModeOff = function() {
   this.isPowerSavingMode = false;
+};
+
+Thermostat.prototype.reset = function(){
+  this.temperature = 20;
+};
+
+Thermostat.prototype.energyUsage = function() {
+  if (this.temperature > 25){
+    return "Energy usage is High Usage"
+  }
+  else if (this.temperature >= 18){
+    return "Energy usage is Medium Usage"
+  } else {
+    return "Energy usage is Low Usage"
+  }
 };
