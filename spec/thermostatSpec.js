@@ -5,13 +5,21 @@ describe('Thermostat', function(){
   // Thermostat starts at 20 degrees
   it('starts at 20 degrees', function(){
     var thermostat = new Thermostat();
-    expect(thermostat.temperature()).toEqual(20);
+    expect(thermostat.temperature).toEqual(20);
+  });
+
+  //
+  
+  it("can increase the temperature", function(){
+    var thermostat = new Thermostat();
+    thermostat.up(1)
+    expect(thermostat.temperature).toEqual(21);
   });
 });
 
 
 
-// Thermostat starts at 20 degrees
+// DONE Thermostat starts at 20 degrees
 // You can increase the temperature with an up function
 // You can decrease the temperature with a down function
 // The minimum temperature is 10 degrees
