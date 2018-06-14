@@ -8,12 +8,12 @@
     <style>
       .circle-text {
         display: table-cell;
-        height: 200px; /*change this and the width
+        height: 350px; /*change this and the width
         for the size of your initial circle*/
-        width: 200px;
+        width: 350px;
         text-align: center;
         vertical-align: middle;
-        border-radius: 50%;
+        border-radius: 48%;
         /*make it pretty*/
         background: #000;
         color: #fff;
@@ -21,18 +21,65 @@
         for font-size and font-family*/
         }
       .glyphicon {
-        font-size: 150px;
+        font-size: 30px;
+      }
+      #temperature-change {
+        font-size: 20px;
+      }
+      .power-saving-mode {
+        font-size: 20px;
+        padding: 5px;
+        padding-left: 50px;
+        margin-bottom: 10px;
+      }
+      .temperature-change {
+        font-size: 20px;
+        padding: 5px;
+        padding-left: 50px;
+        margin-bottom: 10px;
+      }
+      #control-panel {
+        padding: 10px;
+      }
+      .energy-usage {
+        font-size: 20px;
+        padding: 5px;
+        padding-left: 50px;
       }
 
     </style>
   </head>
   <body>
-    <div id="container">
-      <span class="glyphicon glyphicon-arrow-up"></span>
-      <div class="circle-text">
-        Temp here
+    <div class="container">
+        <div class="row">
+          `<div class="col-md-3">
+            <div class="circle-text">
+              Temp here
+            </div>
+          </div>`
+          <div class="col-md-3" id="control-panel">
+            <div class="power-saving-mode">
+              <p id="power-saving-mode">Power Saving Mode</br><p>
+              <button type="button" class="btn btn-success">On</button>
+              <button type="button" class="btn btn-danger">Off</button>
+            </div>
+            <div class="temperature-change">
+              <p id="temperature-change">Temperature</br><p>
+              <span class="glyphicon glyphicon-arrow-up" id="temp-up">Up</span>
+              <span class="glyphicon glyphicon-arrow-down" id="temp-down">Down</span>
+            </div>
+            <div class="col-md-3">
+              <div class="energy-usage">
+                <button type="button" class="btn btn-warning" id="energy-usage">Energy Usage</button>
+                <p id="Energy results"></p>
+              </div>
+              <div class="energy-usage">
+                <p id="energy-usage-answer">Test<p>
+              <div>
+              <button id="temperature-reset">Reset</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <span class="glyphicon glyphicon-arrow-down"></span>
-    </div>
   </body>
 </html>
