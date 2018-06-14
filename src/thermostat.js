@@ -44,11 +44,11 @@ Thermostat.prototype.reset = function(){
 
 Thermostat.prototype.energyUsage = function() {
   if (this.temperature > 25){
-    return "Energy usage is High Usage"
+    return "High"
   }
   else if (this.temperature >= 18){
-    return "Energy usage is Medium Usage"
+    return "Medium"
   } else {
-    return "Energy usage is Low Usage"
+    return "Low"
   }
 };

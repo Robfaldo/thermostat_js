@@ -1,0 +1,28 @@
+<style>
+  .glyphicon {
+    font-size: 30px;
+  }
+  #temperature-change {
+    font-size: 20px;
+  }
+  .power-saving-mode {
+    font-size: 20px;
+    padding: 5px;
+    padding-left: 50px;
+    margin-bottom: 10px;
+  }
+  .temperature-change {
+    font-size: 20px;
+    padding: 5px;
+    padding-left: 50px;
+    margin-bottom: 10px;
+  }
+  #control-panel {
+    padding: 10px;
+  }
+  .energy-usage {
+    font-size: 20px;
+    padding: 5px;
+    padding-left: 50px;
+  }
+</style>

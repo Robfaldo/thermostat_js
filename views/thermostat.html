@@ -3,65 +3,103 @@
   <head>
     <meta charset="utf-8">
     <title>Thermostat</title>
-      <!-- <script type="text/javascript" src="../src/thermostat.js"></script> -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../src/thermostat.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css.css">
     <style>
       .circle-text {
         display: table-cell;
-        height: 350px; /*change this and the width
-        for the size of your initial circle*/
+        height: 350px;
         width: 350px;
         text-align: center;
         vertical-align: middle;
         border-radius: 48%;
-        /*make it pretty*/
         background: #000;
         color: #fff;
-        font: 18px "josefin sans", arial; /*change this
-        for font-size and font-family*/
-        }
-      .glyphicon {
-        font-size: 30px;
+        font: 18px "josefin sans", arial;
       }
-      #temperature-change {
-        font-size: 20px;
+      .high{
+        display: table-cell;
+        height: 350px;
+        width: 350px;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 48%;
+        background: red;
+        color: #fff;
+        font: 18px "josefin sans", arial;
       }
-      .power-saving-mode {
-        font-size: 20px;
-        padding: 5px;
-        padding-left: 50px;
-        margin-bottom: 10px;
+      .medium{
+        display: table-cell;
+        height: 350px;
+        width: 350px;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 48%;
+        background: orange;
+        color: #fff;
+        font: 18px "josefin sans", arial;
       }
-      .temperature-change {
-        font-size: 20px;
-        padding: 5px;
-        padding-left: 50px;
-        margin-bottom: 10px;
+      .low{
+        display: table-cell;
+        height: 350px;
+        width: 350px;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 48%;
+        background: green;
+        color: #fff;
+        font: 18px "josefin sans", arial;
       }
-      #control-panel {
-        padding: 10px;
-      }
-      .energy-usage {
-        font-size: 20px;
-        padding: 5px;
-        padding-left: 50px;
-      }
-
     </style>
+    <script>
+      $( document ).ready(function() {
+        var thermostat = new Thermostat;
+        $('.circle-text').text(thermostat.temperature);
+
+        $('#temp-up').click(function(event) {
+          thermostat.up(1);
+          updateTemperature();
+        });
+        $('#temp-down').click(function(){
+          thermostat.down(1);
+          updateTemperature();
+        });
+        $('#power-saving-mode-on').click(function(){
+          thermostat.powerSavingModeOn();
+        });
+        $('#power-saving-mode-off').click(function(){
+          thermostat.powerSavingModeOff()
+        });
+        $('#temperature-reset').click(function(){
+          thermostat.reset()
+          updateTemperature();
+        });
+        $('.energy-usage').click(function() {
+          $('#energy-usage-answer').text(thermostat.energyUsage())
+        });
+
+        function updateTemperature(){
+          $('#circle-text').text(thermostat.temperature);
+          $('#circle-text').attr('class', thermostat.energyUsage().toLowerCase());
+        };
+      });
+    </script>
   </head>
   <body>
     <div class="container">
         <div class="row">
           `<div class="col-md-3">
-            <div class="circle-text">
+            <div id="circle-text" class="circle-text">
               Temp here
             </div>
           </div>`
           <div class="col-md-3" id="control-panel">
             <div class="power-saving-mode">
-              <p id="power-saving-mode">Power Saving Mode</br><p>
-              <button type="button" class="btn btn-success">On</button>
-              <button type="button" class="btn btn-danger">Off</button>
+              <p>Power Saving Mode</br><p>
+              <button type="button" class="btn btn-success" id="power-saving-mode-on">On</button>
+              <button type="button" class="btn btn-danger" id="power-saving-mode-off">Off</button>
             </div>
             <div class="temperature-change">
               <p id="temperature-change">Temperature</br><p>
@@ -74,7 +112,7 @@
                 <p id="Energy results"></p>
               </div>
               <div class="energy-usage">
-                <p id="energy-usage-answer">Test<p>
+                <p id="energy-usage-answer"><p>
               <div>
               <button id="temperature-reset">Reset</button>
             </div>

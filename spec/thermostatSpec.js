@@ -77,14 +77,14 @@ describe('Thermostat', function(){
     it('high usage if temperature is over 25', function(){
       thermostat.powerSavingModeOff();
       thermostat.up(6);
-      expect(thermostat.energyUsage()).toEqual("Energy usage is High Usage")
+      expect(thermostat.energyUsage()).toEqual("High")
     });
     it('medium usage if temperature is between 18 and 24 inclusive', function(){
-      expect(thermostat.energyUsage()).toEqual("Energy usage is Medium Usage")
+      expect(thermostat.energyUsage()).toEqual("Medium")
     });
     it('low usage if temperature is below 18', function(){
       thermostat.down(3);
-      expect(thermostat.energyUsage()).toEqual("Energy usage is Low Usage")
+      expect(thermostat.energyUsage()).toEqual("Low")
     });
   });
 });
