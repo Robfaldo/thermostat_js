@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Thermostat</title>
+      <!-- <script type="text/javascript" src="../src/thermostat.js"></script> -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+      .circle-text {
+        display: table-cell;
+        height: 200px; /*change this and the width
+        for the size of your initial circle*/
+        width: 200px;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 50%;
+        /*make it pretty*/
+        background: #000;
+        color: #fff;
+        font: 18px "josefin sans", arial; /*change this
+        for font-size and font-family*/
+        }
+      .glyphicon {
+        font-size: 150px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <span class="glyphicon glyphicon-arrow-up"></span>
+      <div class="circle-text">
+        Temp here
+      </div>
+      <span class="glyphicon glyphicon-arrow-down"></span>
+    </div>
+  </body>
+</html>
